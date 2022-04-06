@@ -1,1 +1,497 @@
-.
+<!--
+  Copyright 2018 The Distill Template Authors
+
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<!doctype html>
+
+<style>
+.base-grid,
+pa.n-header,
+.n-byline,
+.n-title,
+.n-article,
+.n-footer {
+    display: grid;
+    justify-items: stretch;
+    grid-template-columns: [screen-start] 8px [page-start kicker-start text-start gutter-start middle-start] 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr [text-end page-end gutter-end kicker-end middle-end] 8px [screen-end];
+    grid-column-gap: 8px;
+    border: 0;
+}
+
+.grid {
+  display: grid;
+  grid-column-gap: 8px;
+}
+
+@media(min-width: 768px) {
+    .base-grid,
+    .n-header,
+    .n-byline,
+    .n-title,
+    .n-article,
+    .n-footer {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: [screen-start] 1fr [page-start kicker-start middle-start text-start] 45px 45px 45px 45px 45px 45px 45px 45px [ kicker-end text-end gutter-start] 45px [middle-end] 45px [page-end gutter-end] 1fr [screen-end];
+        grid-column-gap: 16px;
+    }
+
+    .grid {
+        grid-column-gap: 16px;
+    }
+}
+
+@media(min-width: 1000px) {
+    .base-grid,
+    .n-header,
+    .n-byline,
+    .n-title,
+    .n-article,
+    .n-footer {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 50px [middle-start] 50px [text-start kicker-end] 50px 50px 50px 50px 50px 50px 50px 50px [text-end gutter-start] 50px [middle-end] 50px [page-end gutter-end] 1fr [screen-end];
+        grid-column-gap: 16px;
+    }
+
+    .grid {
+        grid-column-gap: 16px;
+    }
+}
+
+@media (min-width: 1180px) {
+    .base-grid,
+    .n-header,
+    .n-byline,
+    .n-title,
+    .n-article,
+    .n-footer {
+        display: grid;
+        justify-items: stretch;
+        grid-template-columns: [screen-start] 1fr [page-start kicker-start] 60px [middle-start] 60px [text-start kicker-end] 60px 60px 60px 60px 60px 60px 60px 60px [text-end gutter-start] 60px [middle-end] 60px [page-end gutter-end] 1fr [screen-end];
+        grid-column-gap: 32px;
+    }
+    .grid {
+        grid-column-gap: 32px;
+    }
+
+}
+
+.base-grid {
+  grid-column: screen;
+}
+
+/* default grid column assignments */
+.n-title > *  {
+    grid-column: text;
+}
+
+.n-article > *  {
+  grid-column: text;
+}
+
+.n-title {
+    padding: 2.5rem 0 0;
+}
+
+.l-page {
+    grid-column: page;
+}
+
+.l-article {
+    grid-column: text;
+}
+
+p {
+  margin-top: 0;
+  margin-bottom: 1em;
+}
+
+
+.pixelated {
+    image-rendering: pixelated;
+}
+
+strong {
+    font-weight: 600;
+}
+
+/*------------------------------------------------------------------*/
+/* title */
+.n-title h1 {
+    font-family: "Barlow",system-ui,Arial,sans-serif;
+    color:#082333;
+    grid-column: text;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.1em;
+    margin: 0 0 0;
+    text-align: center;
+}
+
+@media (min-width: 768px) {
+    .n-title h1 {
+        font-size: 50px;
+    }
+}
+
+
+.n-byline {
+  contain: style;
+  overflow: hidden;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
+  font-size: 0.8rem;
+  line-height: 1.8em;
+  /* padding: 1.5rem 0; */
+  min-height: 1.8em;
+}
+
+.n-byline .byline {
+  grid-column: text;
+}
+
+.byline {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+
+.grid {
+    display: grid;
+    grid-column-gap: 8px;
+}
+
+@media (min-width: 768px) {
+.grid {
+    grid-column-gap: 16px;
+}
+}
+
+.n-byline p {
+  margin: 0;
+}
+
+.n-byline h3 {
+    font-size: 0.6rem;
+    font-weight: 400;
+    color: rgba(0, 0, 0, 0.5);
+    margin: 0;
+    text-transform: uppercase;
+}
+.n-byline .authors-affiliations {
+  grid-column-end: span 2;
+  grid-template-columns: 1fr 1fr;
+}
+
+ul.authors {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  contain: style;
+  overflow: hidden;
+  /* border-top: 1px solid rgba(0, 0, 0, 0.1); */
+  font-size: 0.8rem;
+  line-height: 1.8em;
+  padding: 1.5rem 0;
+  min-height: 1.8em;
+}
+ul.authors li {
+    padding: 0 0.5rem;
+    display: inline-block;
+}
+
+ul.authors sup {
+    color: rgb(126,126,126);
+}
+
+ul.authors.affiliations  {
+    margin-top: 0.5rem;
+}
+
+ul.authors.affiliations li {
+    color: rgb(126,126,126);
+}
+
+.preload { visibility: hidden; }
+
+* {box-sizing:border-box}
+
+/* Slideshow container */
+.panorama-slideshow {
+  position: relative;
+}
+
+/* Hide the images by default */
+.panorama-slide {
+  display: none;
+}
+
+/* Hide the images by default */
+div[class^='image-gallery-slide-'] {
+  display: none;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  padding: 16px;
+  color: white;
+  font-weight: bold;
+  font-size: 25px;
+  transition: 0.1s ease;
+  border-radius: 0 2px 2px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+/* On hover, add a black background color with a little bit see-through */
+.prev:hover, .next:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+
+/* Next & previous buttons */
+.prev-image, .next-image {
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  width: auto;
+  margin-top: -22px;
+  margin-left: -50px;
+  margin-right: -30px;
+  padding: 16px;
+  color: black;
+  font-weight: bold;
+  font-size: 40px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+}
+
+/* Position the "next button" to the right */
+.next-image {
+  right: 0;
+  border-radius: 3px 0 0 3px;
+}
+
+
+.prev-image:hover, .next-image:hover {
+  background-color: rgba(0,0,0,0.8);
+  color: white;
+}
+
+/* Caption text */
+.text {
+  color: #f2f2f2;
+  font-size: 15px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 8px;
+  width: 100%;
+  text-align: center;
+}
+
+
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+/* Style tab links */
+.tablink {
+  background-color: #fff;
+  color: black;
+  float: left;
+  outline: none;
+  cursor: pointer;
+  padding: 8px 5px;
+  font-size: 17px;
+  font-weight: bold;
+  border: none;
+
+}
+
+.tablink:hover {
+  background-color: #36373A;
+  color: white;
+}
+
+/* Style the tab content (and add height:100% for full page content) */
+.tabcontent {
+  color: white;
+  display: none;
+  padding: 100px 20px;
+  height: 100%;
+}
+
+@media screen and (min-width: 601px) {
+  .tablink {
+    font-size: 17px;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .tablink {
+    font-size: 12px;
+  }
+}
+
+</style>
+<head>
+    <title>Video Diffusion Models</title>
+    <script src="template.v2.js"></script>
+    <meta property="og:title" content="Video Diffusion Models">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <meta charset="utf8">
+    <script>
+        $(window).on( "load", function(){
+        $('.preload').attr('src', function(i,a){
+        $(this).attr('src','')
+            .removeClass('preload')
+            .attr('src', a);
+        });
+      });
+    </script>
+</head>
+
+<body>
+<div class="n-title">
+
+   <h1>
+    Video Diffusion Models
+   </h1>
+   <div class="byline">
+    <ul class="authors">
+     <li>Jonathan Ho*</li>
+     <li>Tim Salimans*</li>
+     <li>Alexey Gritsenko</li>
+     <li>William Chan</li>
+     <li>Mohammad Norouzi</li>
+     <li>David Fleet</li>
+   </div>
+   <p>We present results on video generation using diffusion models. We propose an architecture for video diffusion models which is a natural extension of the standard image architecture. We show that this architecture is effective for jointly training from image and video data. To generate long and higher resolution videos we introduce a new conditioning technique that performs better than previously proposed methods. We present results on text-conditioned video generation and state-of-the-art results on an unconditional video generation benchmark.</p>
+</div>
+
+
+<d-article>
+
+<h3>Example results</h3>
+
+<figure>
+<img class="center pixelated" src="assets/fireworks_q80.webp" style="display:inline-block;">
+<figcaption style="margin-top: 0; margin-bottom: 0; text-align: center;">Samples from a text-conditioned video diffusion model, conditioned on the string <i>fireworks</i>.</figcaption>
+</figure>
+
+
+<figure>
+<img class="center" src="assets/000.webp" style="width:25%; float:left;">
+<img class="center" src="assets/001.webp" style="width:25%; float:left;">
+<img class="center" src="assets/002.webp" style="width:25%; float:left;">
+<img class="center" src="assets/003.webp" style="width:25%; float:left;">
+<img class="center" src="assets/004.webp" style="width:25%; float:left;">
+<img class="center" src="assets/005.webp" style="width:25%; float:left;">
+<img class="center" src="assets/006.webp" style="width:25%; float:left;">
+<img class="center" src="assets/007.webp" style="width:25%; float:left;">
+<img class="center" src="assets/008.webp" style="width:25%; float:left;">
+<img class="center" src="assets/009.webp" style="width:25%; float:left;">
+<img class="center" src="assets/010.webp" style="width:25%; float:left;">
+<img class="center" src="assets/011.webp" style="width:25%; float:left;">
+<img class="center" src="assets/012.webp" style="width:25%; float:left;">
+<img class="center" src="assets/014.webp" style="width:25%; float:left;">
+<img class="center" src="assets/015.webp" style="width:25%; float:left;">
+<img class="center" src="assets/016.webp" style="width:25%; float:left;">
+<img class="center" src="assets/017.webp" style="width:25%; float:left;">
+<img class="center" src="assets/019.webp" style="width:25%; float:left;">
+<img class="center" src="assets/020.webp" style="width:25%; float:left;">
+<img class="center" src="assets/021.webp" style="width:25%; float:left;">
+<img class="center" src="assets/022.webp" style="width:25%; float:left;">
+<img class="center" src="assets/023.webp" style="width:25%; float:left;">
+<img class="center" src="assets/024.webp" style="width:25%; float:left;">
+<img class="center" src="assets/025.webp" style="width:25%; float:left;">
+<img class="center" src="assets/026.webp" style="width:25%; float:left;">
+<img class="center" src="assets/027.webp" style="width:25%; float:left;">
+<img class="center" src="assets/028.webp" style="width:25%; float:left;">
+<img class="center" src="assets/029.webp" style="width:25%; float:left;">
+<figcaption style="text-align: center;">More samples from a text-conditioned video diffusion model. The conditioning string is displayed above each sample.</figcaption>
+</figure>
+
+
+<h3>Summary</h3>
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+Diffusion models have recently been producing high quality results in domains such as image generation and audio generation, and there is significant interest in validating diffusion models in new data modalities. In this work, we present first results on video generation using diffusion models, for both unconditional and conditional settings. Prior work on video generation has usually employed other types of generative models, like GANs, VAEs, flow-based models, and autoregressive models.
+</p>
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+We show that high quality videos can be generated by essentially the standard formulation of the Gaussian diffusion model, with little modification other than straightforward architectural changes to accommodate video data within memory constraints of deep learning accelerators. We train models that generate a block of a fixed number of frames of a video, and to generate videos longer than that number of frames, we additionally show how to repurpose a trained model to act as a model which is block-autoregressive over frames. We test our methods on an unconditional video generation benchmark, where we achieve state-of-the-art sample quality scores, and we also show promising results on text-conditioned video generation.
+</p>
+
+
+<h3>Gradient conditioning method</h3>
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+One of our main innovations is a new conditional generation method for unconditional diffusion models. Our new conditioning method, which refer to as the <i>gradient method</i>, modifies the sampling procedure of the model to improve a conditioning loss on denoised data using gradient-based optimization. We find that the gradient method is more capable than existing methods in ensuring consistency of the generated samples with the conditioning information.
+
+We use the gradient method to autoregressively extend our models to more timesteps and higher resolutions.
+
+<figure>
+<img class="center pixelated" src="assets/video_samples_gradient_cond.png" style="display:inline-block;width:49%">
+<img class="center pixelated" src="assets/video_samples_replace_cond.png" style="display:inline-block;;width:49%">
+<figcaption style="margin-top: 0; margin-bottom: 0; text-align: center;">Frames from our gradient method (left) and a baseline "replacement" method (right) for autoregressive extension. Videos sampled using the gradient method attain superior temporal coherence compared to the baseline method.</figcaption>
+</figure>
+
+</p>
+
+
+<h3>Additional techniques</h3>
+
+<p style="margin-bottom: 4%; margin-top: -2%">
+The basic techniques we employ are as follows (details can be found in our full paper):
+<ul>
+  <li>Architecture: for video data we use a factorized space-time UNet, which is a straightforward extension of the standard 2D UNet used in image diffusion models.</li>
+  <li>Joint image-video training: our factorized UNets can be run on variable sequence lengths and therefore can be jointly trained on both video and image modeling objectives. We find that this joint training, which has the effect of a bias-variance tradeoff on the training objective, is important for video sample quality.</li>
+  <li>Classifier-free guidance: improves sample quality for text conditioned generation, similar to existing work on image modeling.</li>
+</ul>
+</p>
+
+
+</d-article>
+
+</body>
